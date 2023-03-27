@@ -125,14 +125,14 @@ public class MainFromController {
                     primary.setScene(scene);
                     primary.centerOnScreen();
 
-                    TranslateTransition tt=new TranslateTransition(Duration.millis(400),scene.getRoot());
+                    TranslateTransition tt=new TranslateTransition(Duration.millis(4000),scene.getRoot());
                     tt.setFromX(-scene.getWidth());
                     tt.setToX(0);
                     tt.play();
 
                 }
             }catch (NullPointerException e){
-
+//                new Alert(Alert.AlertType.WARNING, "Not suitable").show();
             }
         }
     }
