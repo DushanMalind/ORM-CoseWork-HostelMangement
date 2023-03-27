@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.hostelManagement.controller.MainFromController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.MainFromController">
+   <children>
+      <Label layoutX="548.0" layoutY="42.0" prefHeight="122.0" prefWidth="844.0" text="        Hostel Mangement System" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="52.0" />
+         </font>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </Label>
+      <Label layoutX="136.0" layoutY="201.0" prefHeight="620.0" prefWidth="938.0" style="-fx-background-color: white;" styleClass="payload" stylesheets="@assests/style/style.css" />
+      <Label fx:id="lblHead" layoutX="1213.0" layoutY="213.0" prefHeight="245.0" prefWidth="556.0" text="            Welcome" textFill="#037bfc">
+         <font>
+            <Font name="Arial Bold" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="1074.0" layoutY="425.0" prefHeight="106.0" prefWidth="834.0" text="Please select one of above main operations to proceed" textFill="#eb0c0c">
+         <font>
+            <Font name="Arial Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1237.0" layoutY="564.0" prefHeight="16.0" prefWidth="577.0" text="All Rights Reserved. MIT License.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgStudent" fitHeight="62.0" fitWidth="73.0" layoutX="264.0" layoutY="256.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/imge/customers.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgReservation" fitHeight="62.0" fitWidth="73.0" layoutX="407.0" layoutY="262.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/imge/icons8-add-basket-64.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgRoom" fitHeight="62.0" fitWidth="73.0" layoutX="584.0" layoutY="262.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/imge/icons8-buy%20(1).gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
 </AnchorPane>
