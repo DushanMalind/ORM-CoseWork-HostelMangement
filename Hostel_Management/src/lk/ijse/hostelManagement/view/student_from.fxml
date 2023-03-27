@@ -1,14 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableRow?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.hostelManagement.controller.StudentFromController"
-            prefHeight="1080.0" prefWidth="1920.0">
-
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.StudentFromController">
+   <children>
+      <Label layoutX="512.0" layoutY="91.0" prefHeight="118.0" prefWidth="843.0" text="             Mange Student From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="215.0" layoutY="91.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/imge/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="73.0" layoutY="374.0" prefHeight="51.0" prefWidth="314.0" text="Student ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="452.0" layoutY="364.0" prefHeight="51.0" prefWidth="314.0" text="Student Name :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="483.0" prefHeight="51.0" prefWidth="287.0" text="Student Address :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="458.0" layoutY="483.0" prefHeight="51.0" prefWidth="314.0" text="Student Contact :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSave" layoutX="264.0" layoutY="792.0" onAction="#btnSaveOnStudentAction" prefHeight="39.0" prefWidth="191.0" text="Save Student">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton layoutX="519.0" layoutY="792.0" onAction="#btnClearOnStudentAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXTreeTableRow layoutX="1270.0" layoutY="391.0" />
+      <Label layoutX="797.0" layoutY="321.0" prefHeight="575.0" prefWidth="1034.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblCustomer" layoutX="812.0" layoutY="421.0" prefHeight="449.0" prefWidth="991.0" styleClass="table-cell" stylesheets="@../../../../../../../../../AD1/AD1/New%20folder/Project%20Computer_Shop%20Layered-Architecture/Computer_Shop/src/lk/ijse/computer_Shop/view/assests/style/manage-customers-form.css">
+         <columns>
+            <TableColumn fx:id="colStuId" prefWidth="185.0" text="StuID" />
+            <TableColumn fx:id="colStuName" prefWidth="156.0" text="StuName" />
+            <TableColumn fx:id="colAddress" prefWidth="178.0" text="Address" />
+            <TableColumn fx:id="colContact" prefWidth="178.0" text="Contact" />
+            <TableColumn fx:id="colDob" prefWidth="134.0" text="DOB" />
+            <TableColumn fx:id="colGender" prefWidth="157.0" text="Gender" />
+         </columns>
+      </TableView>
+      <Separator layoutX="432.0" layoutY="263.0" prefHeight="2.0" prefWidth="823.0" />
+      <Separator layoutX="422.0" layoutY="902.0" prefHeight="2.0" prefWidth="823.0" />
+      <Label layoutX="831.0" layoutY="331.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAddNewStudent" layoutX="596.0" layoutY="302.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="191.0" text="+New Student">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <TextField fx:id="txtStudentId" layoutX="73.0" layoutY="434.0" prefHeight="39.0" prefWidth="236.0" />
+      <TextField fx:id="txtName" layoutX="458.0" layoutY="434.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtAddress" layoutX="73.0" layoutY="534.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtContact" layoutX="458.0" layoutY="534.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtSearch" layoutX="812.0" layoutY="375.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="73.0" layoutY="590.0" prefHeight="51.0" prefWidth="287.0" text="Student DOB :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDob" layoutX="73.0" layoutY="641.0" prefHeight="39.0" prefWidth="287.0" />
+      <Label layoutX="452.0" layoutY="596.0" prefHeight="51.0" prefWidth="287.0" text="Student Gender :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmdGender" layoutX="452.0" layoutY="643.0" prefHeight="39.0" prefWidth="314.0" />
+   </children>
 </AnchorPane>
