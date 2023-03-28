@@ -3,13 +3,13 @@ package lk.ijse.hostelManagement.model;
 public class RoomDTO {
     private String roomTypeId;
     private String type;
-    private double keyMoney;
+    private String keyMoney;
     private int qty;
 
     public RoomDTO() {
     }
 
-    public RoomDTO(String roomTypeId, String type, double keyMoney, int qty) {
+    public RoomDTO(String roomTypeId, String type, String keyMoney, int qty) {
         this.roomTypeId = roomTypeId;
         this.type = type;
         this.keyMoney = keyMoney;
@@ -32,11 +32,11 @@ public class RoomDTO {
         this.type = type;
     }
 
-    public double getKeyMoney() {
+    public String getKeyMoney() {
         return keyMoney;
     }
 
-    public void setKeyMoney(double keyMoney) {
+    public void setKeyMoney(String keyMoney) {
         this.keyMoney = keyMoney;
     }
 
@@ -53,7 +53,7 @@ public class RoomDTO {
         return "RoomDTO{" +
                 "roomTypeId='" + roomTypeId + '\'' +
                 ", type='" + type + '\'' +
-                ", keyMoney=" + keyMoney +
+                ", keyMoney='" + keyMoney + '\'' +
                 ", qty=" + qty +
                 '}';
     }

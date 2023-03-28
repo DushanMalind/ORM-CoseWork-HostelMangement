@@ -1,6 +1,7 @@
 package lk.ijse.hostelManagement.dao.custom.impl;
 
 import lk.ijse.hostelManagement.dao.custom.StudentDAO;
+import lk.ijse.hostelManagement.entity.Room;
 import lk.ijse.hostelManagement.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -48,7 +49,22 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        return null;
+        Student student=null;
+        try {
+            String sql="FROM Reservation ORDER BY id desc";
+            Query query=session.createQuery(sql);
+            query.setMaxResults(1);
+            student= (Student) query.uniqueResult();
+        }catch (Exception e){
+
+        }
+        String lastId=student.getStudentId();
+
+        if (lastId!=null){
+            int newCustomerId=Integer.parseInt(lastId.replace("S00-",""))+1;
+            return String.format("S00-%03d",newCustomerId);
+        }
+        return "S00-001";
     }
 
     @Override

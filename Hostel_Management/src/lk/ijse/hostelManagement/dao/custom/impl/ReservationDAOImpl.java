@@ -1,20 +1,18 @@
 package lk.ijse.hostelManagement.dao.custom.impl;
 
-import lk.ijse.hostelManagement.dao.custom.RoomDAO;
+import lk.ijse.hostelManagement.dao.custom.ReservationDAO;
 import lk.ijse.hostelManagement.entity.Reservation;
-import lk.ijse.hostelManagement.entity.Room;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class RoomDAOImpl implements RoomDAO {
-
+public class ReservationDAOImpl implements ReservationDAO {
     private  Session session;
     @Override
-    public List<Room> getAll() throws SQLException, ClassNotFoundException {
-        String sql="FROM Room";
+    public List<Reservation> getAll() throws SQLException, ClassNotFoundException {
+        String sql="FROM Reservation";
         Query query=session.createQuery(sql);
         List list= query.list();
         session.close();
@@ -22,43 +20,43 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public String save(Room dto) throws SQLException, ClassNotFoundException {
+    public String save(Reservation dto) throws SQLException, ClassNotFoundException {
         return (String) session.save(dto);
     }
 
     @Override
-    public void update(Room dto) throws SQLException, ClassNotFoundException {
+    public void update(Reservation dto) throws SQLException, ClassNotFoundException {
         session.update(dto);
     }
 
     @Override
-    public void delete(Room dto) throws SQLException, ClassNotFoundException {
+    public void delete(Reservation dto) throws SQLException, ClassNotFoundException {
         session.delete(dto);
     }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        Room room=null;
+        Reservation reservation=null;
         try {
             String sql="FROM Reservation ORDER BY id desc";
             Query query=session.createQuery(sql);
             query.setMaxResults(1);
-            room= (Room) query.uniqueResult();
+            reservation= (Reservation) query.uniqueResult();
         }catch (Exception e){
 
         }
-        String lastId=room.getRoomTypeId();
+        String lastId=reservation.getResId();
 
         if (lastId!=null){
-            int newCustomerId=Integer.parseInt(lastId.replace("R00-",""))+1;
-            return String.format("R00-%03d",newCustomerId);
+            int newCustomerId=Integer.parseInt(lastId.replace("RE0-",""))+1;
+            return String.format("RE0-%03d",newCustomerId);
         }
-        return "R00-001";
+        return "RE0-001";
     }
 
     @Override
-    public Room get(String id) throws SQLException, ClassNotFoundException {
-        return session.get(Room.class,id);
+    public Reservation get(String id) throws SQLException, ClassNotFoundException {
+        return session.get(Reservation.class,id);
     }
 
     @Override
