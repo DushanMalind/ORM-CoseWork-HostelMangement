@@ -5,10 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lk.ijse.hostelManagement.util.SessionFactoryConfiguaration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class AppInitializer extends Application {
     public static void main(String[] args) {
         launch(args);
+
+        Session session= SessionFactoryConfiguaration.getInstance().getSession();
+        Transaction transaction= session.beginTransaction();
+
     }
 
     @Override

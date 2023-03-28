@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Student")
 public class Student {
     @Id
-    @Column(name = "studentId")
+    @Column(name = "studentId",length = 10)
     private String studentId;
     @Column(name = "name")
     private String name;
@@ -21,7 +21,7 @@ public class Student {
     @Column(name = "gender")
     private String gender;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "studentId")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "student")
     private List<Reservation>reservationList=new ArrayList<>();
 
     public Student() {
