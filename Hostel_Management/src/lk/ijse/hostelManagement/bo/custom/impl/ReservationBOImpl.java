@@ -35,12 +35,12 @@ public class ReservationBOImpl implements ReservationBO {
     }
 
     @Override
-    public StudentDTO getStudent() throws Exception {
+    public StudentDTO getStudent(String id) throws Exception {
         return null;
     }
 
     @Override
-    public RoomDTO getRoom() throws Exception {
+    public RoomDTO getRoom(String id) throws Exception {
         return null;
     }
 }

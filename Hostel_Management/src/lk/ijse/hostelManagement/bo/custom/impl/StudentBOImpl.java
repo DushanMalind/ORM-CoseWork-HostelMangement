@@ -22,18 +22,21 @@ public class StudentBOImpl implements StudentBO {
         List<Student>allStudent=studentDAO.getAll();
         List<StudentDTO>studentDTOList=new ArrayList<>();
         for (Student student :allStudent){
-            studentDTOList.add(new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),student.getContact(),student.getDob(),student.getGender()));
+            studentDTOList.add(new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),
+                    student.getContact(),student.getDob(),student.getGender()));
         }
         return studentDTOList;
     }
 
     @Override
     public String saveStudent(StudentDTO studentDTO) throws Exception {
+        session=SessionFactoryConfiguaration.getInstance().getSession();
         Transaction transaction=session.beginTransaction();
 
         try{
             studentDAO.setSession(session);
-            String id=(String) studentDAO.save(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
+            String id=(String) studentDAO.save(new Student(studentDTO.getStudentId(),studentDTO.getName(),
+                    studentDTO.getAddress(),studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
             transaction.commit();
             session.close();
             return id;
@@ -52,7 +55,8 @@ public class StudentBOImpl implements StudentBO {
         Transaction transaction=session.beginTransaction();
         try {
             studentDAO.setSession(session);
-            studentDAO.update(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
+            studentDAO.update(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),
+                    studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
             transaction.commit();
             session.close();
             return true;
@@ -69,7 +73,8 @@ public class StudentBOImpl implements StudentBO {
         Transaction transaction=session.beginTransaction();
         try {
             studentDAO.setSession(session);
-            studentDAO.delete(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
+            studentDAO.delete(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),
+                    studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
         }catch (Exception e){
 
         }

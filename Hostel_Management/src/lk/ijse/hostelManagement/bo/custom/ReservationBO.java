@@ -19,7 +19,7 @@ public interface ReservationBO extends SuperBO {
 
     String generateReservationId() throws Exception;;
 
-    StudentDTO getStudent() throws Exception;
+    StudentDTO getStudent(String id) throws Exception;
 
-    RoomDTO getRoom() throws Exception;
+    RoomDTO getRoom(String id) throws Exception;
 }

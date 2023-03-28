@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface RoomBO extends SuperBO {
-    List<RoomDTO> getAllRoom() throws SQLException;
+    List<RoomDTO> getAllRoom() throws Exception;
 
     boolean saveRoom(RoomDTO roomDTO) throws Exception;
 
