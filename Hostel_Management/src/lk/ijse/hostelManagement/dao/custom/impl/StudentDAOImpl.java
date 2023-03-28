@@ -27,6 +27,7 @@ public class StudentDAOImpl implements StudentDAO {
         String sql="FROM Student";
         Query query=session.createQuery(sql);
         List list= query.list();
+        session.close();
         return list;
     }
 
