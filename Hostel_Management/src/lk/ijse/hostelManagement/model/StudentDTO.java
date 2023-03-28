@@ -1,7 +1,7 @@
 package lk.ijse.hostelManagement.model;
 
 public class StudentDTO {
-    private long studentId;
+    private String studentId;
     private String name;
     private String address;
     private String contact;
@@ -11,7 +11,7 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
-    public StudentDTO(long studentId, String name, String address, String contact, String dob, String gender) {
+    public StudentDTO(String studentId, String name, String address, String contact, String dob, String gender) {
         this.studentId = studentId;
         this.name = name;
         this.address = address;
@@ -20,11 +20,11 @@ public class StudentDTO {
         this.gender = gender;
     }
 
-    public long getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
@@ -71,7 +71,7 @@ public class StudentDTO {
     @Override
     public String toString() {
         return "StudentDTO{" +
-                "studentId=" + studentId +
+                "studentId='" + studentId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +

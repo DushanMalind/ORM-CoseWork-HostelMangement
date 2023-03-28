@@ -3,16 +3,18 @@ package lk.ijse.hostelManagement.model;
 import java.sql.Date;
 
 public class ReservationDTO {
-    private long resId;
+    private String resId;
     private Date date;
-    private long studentId;
-    private long roomTypeId;
+    private String studentId;
+    private String roomTypeId;
     private String status;
+
+
 
     public ReservationDTO() {
     }
 
-    public ReservationDTO(long resId, Date date, long studentId, long roomTypeId, String status) {
+    public ReservationDTO(String resId, Date date, String studentId, String roomTypeId, String status) {
         this.resId = resId;
         this.date = date;
         this.studentId = studentId;
@@ -20,11 +22,11 @@ public class ReservationDTO {
         this.status = status;
     }
 
-    public long getResId() {
+    public String getResId() {
         return resId;
     }
 
-    public void setResId(long resId) {
+    public void setResId(String resId) {
         this.resId = resId;
     }
 
@@ -36,19 +38,19 @@ public class ReservationDTO {
         this.date = date;
     }
 
-    public long getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
-    public long getRoomTypeId() {
+    public String getRoomTypeId() {
         return roomTypeId;
     }
 
-    public void setRoomTypeId(long roomTypeId) {
+    public void setRoomTypeId(String roomTypeId) {
         this.roomTypeId = roomTypeId;
     }
 
@@ -63,10 +65,10 @@ public class ReservationDTO {
     @Override
     public String toString() {
         return "ReservationDTO{" +
-                "resId=" + resId +
+                "resId='" + resId + '\'' +
                 ", date=" + date +
-                ", studentId=" + studentId +
-                ", roomTypeId=" + roomTypeId +
+                ", studentId='" + studentId + '\'' +
+                ", roomTypeId='" + roomTypeId + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

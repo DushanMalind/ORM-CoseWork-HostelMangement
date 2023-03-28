@@ -1,19 +1,43 @@
 package lk.ijse.hostelManagement.entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "Reservation")
 public class Reservation {
-    private long resId;
+    @Id
+    @Column(name = "reservationId",length = 10)
+    private String resId;
+    @Column(name = "data")
     private Date date;
-    private long studentId;
-    private long roomTypeId;
+    @Column(name = "status")
     private String status;
 
-    public long getResId() {
+    @ManyToOne
+    @JoinColumn(name = "studentId",referencedColumnName = "studentId",insertable = false,updatable = false)
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "roomTypeId",referencedColumnName = "roomTypeId",insertable = false,updatable = false)
+    private Room room;
+
+
+
+    public Reservation() {
+    }
+
+    public Reservation(String resId, Date date, String status) {
+        this.resId = resId;
+        this.date = date;
+        this.status = status;
+    }
+
+    public String getResId() {
         return resId;
     }
 
-    public void setResId(long resId) {
+    public void setResId(String resId) {
         this.resId = resId;
     }
 
@@ -23,22 +47,6 @@ public class Reservation {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
-    }
-
-    public long getRoomTypeId() {
-        return roomTypeId;
-    }
-
-    public void setRoomTypeId(long roomTypeId) {
-        this.roomTypeId = roomTypeId;
     }
 
     public String getStatus() {
@@ -52,10 +60,8 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "resId=" + resId +
+                "resId='" + resId + '\'' +
                 ", date=" + date +
-                ", studentId=" + studentId +
-                ", roomTypeId=" + roomTypeId +
                 ", status='" + status + '\'' +
                 '}';
     }

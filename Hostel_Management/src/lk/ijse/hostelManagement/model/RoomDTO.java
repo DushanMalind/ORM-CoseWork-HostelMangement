@@ -1,26 +1,26 @@
 package lk.ijse.hostelManagement.model;
 
 public class RoomDTO {
-    private long roomTypeId;
+    private String roomTypeId;
     private String type;
-    private String keyMoney;
+    private double keyMoney;
     private int qty;
 
     public RoomDTO() {
     }
 
-    public RoomDTO(long roomTypeId, String type, String keyMoney, int qty) {
+    public RoomDTO(String roomTypeId, String type, double keyMoney, int qty) {
         this.roomTypeId = roomTypeId;
         this.type = type;
         this.keyMoney = keyMoney;
         this.qty = qty;
     }
 
-    public long getRoomTypeId() {
+    public String getRoomTypeId() {
         return roomTypeId;
     }
 
-    public void setRoomTypeId(long roomTypeId) {
+    public void setRoomTypeId(String roomTypeId) {
         this.roomTypeId = roomTypeId;
     }
 
@@ -32,11 +32,11 @@ public class RoomDTO {
         this.type = type;
     }
 
-    public String getKeyMoney() {
+    public double getKeyMoney() {
         return keyMoney;
     }
 
-    public void setKeyMoney(String keyMoney) {
+    public void setKeyMoney(double keyMoney) {
         this.keyMoney = keyMoney;
     }
 
@@ -51,9 +51,9 @@ public class RoomDTO {
     @Override
     public String toString() {
         return "RoomDTO{" +
-                "roomTypeId=" + roomTypeId +
+                "roomTypeId='" + roomTypeId + '\'' +
                 ", type='" + type + '\'' +
-                ", keyMoney='" + keyMoney + '\'' +
+                ", keyMoney=" + keyMoney +
                 ", qty=" + qty +
                 '}';
     }
