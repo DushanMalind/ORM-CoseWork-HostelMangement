@@ -75,10 +75,15 @@ public class StudentBOImpl implements StudentBO {
             studentDAO.setSession(session);
             studentDAO.delete(new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),
                     studentDTO.getContact(),studentDTO.getDob(),studentDTO.getGender()));
+            transaction.commit();
+            session.close();
+            return true;
         }catch (Exception e){
-
+            transaction.rollback();
+            session.close();
+            return false;
         }
-        return false;
+
     }
 
     @Override

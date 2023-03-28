@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ReservationBO extends SuperBO {
-    List<ReservationDTO> getAllReservation() throws SQLException;
+    List<ReservationDTO> getAllReservation() throws Exception;
 
-    boolean saveReservation(ReservationDTO reservationDTO) throws Exception;
+    String saveReservation(ReservationDTO reservationDTO) throws Exception;
 
     boolean updateReservation(ReservationDTO reservationDTO) throws Exception;
 
@@ -19,7 +19,7 @@ public interface ReservationBO extends SuperBO {
 
     String generateReservationId() throws Exception;;
 
-    StudentDTO getStudent(String id) throws Exception;
+    StudentDTO getStudents(String id) throws Exception;
 
-    RoomDTO getRoom(String id) throws Exception;
+    RoomDTO getRooms(String id) throws Exception;
 }

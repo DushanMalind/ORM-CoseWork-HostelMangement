@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UserBO extends SuperBO {
-    List<UserDTO> getAllUser() throws SQLException;
+    List<UserDTO> getAllUser() throws Exception;
 
-    boolean saveUser(UserDTO userDTO) throws Exception;
+    String saveUser(UserDTO userDTO) throws Exception;
 
     boolean updateUser(UserDTO userDTO) throws Exception;
 

@@ -27,17 +27,22 @@ public class RoomBOImpl implements RoomBO {
     }
 
     @Override
-    public boolean saveRoom(RoomDTO roomDTO) throws Exception {
+    public String saveRoom(RoomDTO roomDTO) throws Exception {
         session= SessionFactoryConfiguaration.getInstance().getSession();
         Transaction transaction=session.beginTransaction();
         try {
             roomDAO.setSession(session);
             String id=(String) roomDAO.save(new Room(roomDTO.getRoomTypeId(),roomDTO.getType(),roomDTO.getKeyMoney(),
                     roomDTO.getQty()));
+            transaction.commit();
+            session.close();
+            return id;
         }catch (Exception e){
-
+            transaction.rollback();
+            session.close();
+            return "R00-001";
         }
-        return false;
+
     }
 
     @Override
@@ -65,7 +70,7 @@ public class RoomBOImpl implements RoomBO {
         Transaction transaction=session.beginTransaction();
         try {
             roomDAO.setSession(session);
-            roomDAO.update(new Room(roomDTO.getRoomTypeId(),roomDTO.getType(),roomDTO.getKeyMoney(),
+            roomDAO.delete(new Room(roomDTO.getRoomTypeId(),roomDTO.getType(),roomDTO.getKeyMoney(),
                     roomDTO.getQty()));
             transaction.commit();
             session.close();
