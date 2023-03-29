@@ -10,8 +10,10 @@ public class ReservationDTO {
     private Date date;
     private String status;
 
-    private Student student;
-    private Room room;
+    private StudentDTO studentDTO;
+    private RoomDTO roomDTO;
+    private String studentId;
+    private String roomId;
 
     public ReservationDTO() {
     }
@@ -22,12 +24,14 @@ public class ReservationDTO {
         this.status = status;
     }
 
-    public ReservationDTO(String resId, Date date, String status, Student student, Room room) {
+    public ReservationDTO(String resId, Date date, String status, StudentDTO studentDTO, RoomDTO roomDTO, String studentId, String roomId) {
         this.resId = resId;
         this.date = date;
         this.status = status;
-        this.student = student;
-        this.room = room;
+        this.studentDTO = studentDTO;
+        this.roomDTO = roomDTO;
+        this.studentId = studentId;
+        this.roomId = roomId;
     }
 
     public String getResId() {
@@ -54,20 +58,38 @@ public class ReservationDTO {
         this.status = status;
     }
 
-    public Student getStudent() {
-        return student;
+    public StudentDTO getStudentDTO() {
+        return studentDTO;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentDTO(StudentDTO studentDTO) {
+        this.studentDTO = studentDTO;
+        studentId=studentDTO.getStudentId();
     }
 
-    public Room getRoom() {
-        return room;
+    public RoomDTO getRoomDTO() {
+        return roomDTO;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoomDTO(RoomDTO roomDTO) {
+        this.roomDTO = roomDTO;
+        roomId=roomDTO.getRoomTypeId();
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
     @Override
@@ -76,8 +98,10 @@ public class ReservationDTO {
                 "resId='" + resId + '\'' +
                 ", date=" + date +
                 ", status='" + status + '\'' +
-                ", student=" + student +
-                ", room=" + room +
+                ", studentDTO=" + studentDTO +
+                ", roomDTO=" + roomDTO +
+                ", studentId='" + studentId + '\'' +
+                ", roomId='" + roomId + '\'' +
                 '}';
     }
 }

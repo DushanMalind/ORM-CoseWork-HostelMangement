@@ -21,6 +21,7 @@ import java.io.IOException;
 
 public class MainFromController {
 
+    public ImageView imgUser;
     @FXML
     private ImageView imgReservation;
 
@@ -71,15 +72,19 @@ public class MainFromController {
             switch (icon.getId()){
                 case "imgStudent":
                     lblHead.setText("Student From");
-                    lblDescription.setText("Click to add, edit, delete, search or view customers");
+                    lblDescription.setText("Click to add, edit, delete, search or view Student");
                     break;
                 case "imgReservation":
                     lblHead.setText("Reservation From");
-                    lblDescription.setText("Click to add, edit, delete, search or view customers");
+                    lblDescription.setText("Click to add, edit, delete, search or view Reservation");
                     break;
                 case "imgRoom":
                     lblHead.setText("Room From");
-                    lblDescription.setText("Click to add, edit, delete, search or view customers");
+                    lblDescription.setText("Click to add, edit, delete, search or view Room");
+                    break;
+                case "imgUser":
+                    lblHead.setText("User From");
+                    lblDescription.setText("Click to add, edit, delete, search or view User");
                     break;
             }
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(4000), icon);
@@ -113,6 +118,9 @@ public class MainFromController {
                     break;
                 case "imgRoom" :
                     root= FXMLLoader.load(this.getClass().getResource("../view/room_from.fxml"));
+                    break;
+                case "imgUser" :
+                    root= FXMLLoader.load(this.getClass().getResource("../view/user_from.fxml"));
                     break;
                 default:
                     new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();

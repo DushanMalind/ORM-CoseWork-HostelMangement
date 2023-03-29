@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableRow?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.UserFromController">
+   <children>
+      <Label layoutX="542.0" layoutY="121.0" prefHeight="118.0" prefWidth="843.0" text="                        Mange User From">
+         <font>
+            <Font name="Arial Bold" size="44.0" />
+         </font>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </Label>
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="245.0" layoutY="121.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/imge/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="114.0" layoutY="456.0" prefHeight="51.0" prefWidth="314.0" text="User ID :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="493.0" layoutY="446.0" prefHeight="51.0" prefWidth="314.0" text="User Name :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="565.0" prefHeight="51.0" prefWidth="287.0" text="Password :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="496.0" layoutY="560.0" prefHeight="51.0" prefWidth="314.0" text="Contact :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSave" layoutX="293.0" layoutY="756.0" onAction="#btnSaveOnUserAction" prefHeight="39.0" prefWidth="199.0" text="Save User">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="555.0" layoutY="756.0" onAction="#btnClearOnRoomAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXTreeTableRow layoutX="1300.0" layoutY="421.0" />
+      <Label layoutX="827.0" layoutY="351.0" prefHeight="575.0" prefWidth="749.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblUser" layoutX="842.0" layoutY="451.0" prefHeight="449.0" prefWidth="704.0" styleClass="table-cell">
+         <columns>
+            <TableColumn fx:id="colRoomId" prefWidth="185.0" text="UserID" />
+            <TableColumn fx:id="colType" prefWidth="156.0" text="UserName" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="178.0" text="Password" />
+            <TableColumn fx:id="colQTY" prefWidth="179.0" text="Contact" />
+         </columns>
+      </TableView>
+      <Separator layoutX="462.0" layoutY="293.0" prefHeight="2.0" prefWidth="823.0" />
+      <Separator layoutX="452.0" layoutY="932.0" prefHeight="2.0" prefWidth="823.0" />
+      <Label layoutX="861.0" layoutY="361.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAddNewUser" layoutX="585.0" layoutY="351.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="214.0" text="+New User">
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+      </JFXButton>
+      <TextField fx:id="txtUserId" layoutX="114.0" layoutY="516.0" prefHeight="39.0" prefWidth="236.0" />
+      <TextField fx:id="txtUserName" layoutX="499.0" layoutY="516.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtContact" layoutX="499.0" layoutY="616.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtSearch" layoutX="842.0" layoutY="405.0" prefHeight="39.0" prefWidth="377.0" />
+      <PasswordField fx:id="txtPassword" layoutX="114.0" layoutY="616.0" prefHeight="39.0" prefWidth="249.0" />
+   </children>
+</AnchorPane>

@@ -119,12 +119,66 @@ public class ReservationBOImpl implements ReservationBO {
     public RoomDTO getRooms(String id) throws Exception {
         try {
             session= SessionFactoryConfiguaration.getInstance().getSession();
-            reservationDAO.setSession(session);
+            roomDAO.setSession(session);
             Room room=roomDAO.get(id);
+            session.close();
             return new RoomDTO(room.getRoomTypeId(),room.getType(),room.getKeyMoney(),room.getQty());
         }catch (Exception e){
             throw e;
         }
 
     }
+
+    @Override
+    public List<String> getStudentIds() {
+        try {
+            session=SessionFactoryConfiguaration.getInstance().getSession();
+            studentDAO.setSession(session);
+            session.close();
+            return studentDAO.geIds();
+        }catch (Exception e){
+            session.close();
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<String> getRoomIds() {
+        try {
+            session=SessionFactoryConfiguaration.getInstance().getSession();
+            roomDAO.setSession(session);
+            return roomDAO.geIds();
+        }catch (Exception e){
+            session.close();
+            return null;
+        }
+    }
+
+    @Override
+    public List<StudentDTO> geAllStudents() throws Exception {
+        session= SessionFactoryConfiguaration.getInstance().getSession();
+        studentDAO.setSession(session);
+        List<Student>allStudent=studentDAO.getAll();
+        List<StudentDTO>studentDTOList=new ArrayList<>();
+        for (Student student :allStudent){
+            studentDTOList.add(new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),
+                    student.getContact(),student.getDob(),student.getGender()));
+        }
+        return studentDTOList;
+    }
+
+    @Override
+    public List<RoomDTO> getAllRooms() throws Exception {
+        session= SessionFactoryConfiguaration.getInstance().getSession();
+        roomDAO.setSession(session);
+        List<Room>allRooms=roomDAO.getAll();
+        List<RoomDTO>roomDTOS=new ArrayList<>();
+        for (Room room : allRooms){
+            roomDTOS.add(new RoomDTO(room.getRoomTypeId(),room.getType(),room.getKeyMoney(),room.getQty()));
+        }
+        return roomDTOS;
+    }
+
+
 }

@@ -22,4 +22,12 @@ public interface ReservationBO extends SuperBO {
     StudentDTO getStudents(String id) throws Exception;
 
     RoomDTO getRooms(String id) throws Exception;
+
+    List<String> getStudentIds();
+
+    List<String> getRoomIds();
+
+    List<StudentDTO> geAllStudents() throws Exception;
+
+    List<RoomDTO>getAllRooms() throws Exception;
 }

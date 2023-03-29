@@ -37,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        String sql="FROM Student ORDER BY id DESC";
+        String sql="FROM Users ORDER BY id DESC";
         Student student= (Student) session.createQuery(sql).setMaxResults(1).uniqueResult();
         session.close();
         if (student!=null){

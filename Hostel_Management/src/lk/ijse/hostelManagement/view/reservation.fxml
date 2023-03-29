@@ -5,6 +5,8 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -17,7 +19,7 @@
 
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.ReservationController">
    <children>
-      <Label layoutX="522.0" layoutY="101.0" prefHeight="118.0" prefWidth="843.0" text="              Mange Reservation From">
+      <Label layoutX="517.0" layoutY="42.0" prefHeight="118.0" prefWidth="843.0" text="              Mange Reservation From">
          <font>
             <Font name="Arial Bold" size="44.0" />
          </font>
@@ -30,7 +32,7 @@
             <URL value="@assests/style/style3.css" />
          </stylesheets>
       </Label>
-      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="225.0" layoutY="101.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="144.0" fitWidth="173.0" layoutX="303.0" layoutY="29.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assests/imge/home-icon.png" />
          </image>
@@ -38,27 +40,27 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label layoutX="86.0" layoutY="411.0" prefHeight="51.0" prefWidth="314.0" text="Reservation ID :">
+      <Label layoutX="67.0" layoutY="212.0" prefHeight="51.0" prefWidth="314.0" text="Reservation ID :">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="465.0" layoutY="401.0" prefHeight="51.0" prefWidth="314.0" text="Date :">
+      <Label layoutX="446.0" layoutY="202.0" prefHeight="51.0" prefWidth="314.0" text="Name :">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="86.0" layoutY="520.0" prefHeight="51.0" prefWidth="287.0" text="Student ID :">
+      <Label layoutX="67.0" layoutY="321.0" prefHeight="51.0" prefWidth="287.0" text="Student ID :">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="468.0" layoutY="515.0" prefHeight="51.0" prefWidth="314.0" text="Room Type ID :">
+      <Label layoutX="449.0" layoutY="316.0" prefHeight="51.0" prefWidth="314.0" text="Room Type ID :">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" layoutX="259.0" layoutY="802.0" onAction="#btnSaveOnReservationAction" prefHeight="39.0" prefWidth="206.0" text="Save Reservation">
+      <JFXButton fx:id="btnSave" layoutX="335.0" layoutY="540.0" onAction="#btnSaveOnReservationAction" prefHeight="39.0" prefWidth="206.0" text="Save Reservation">
          <styleClass>
             <String fx:value="circle3" />
             <String fx:value="specialTextColour" />
@@ -75,7 +77,7 @@
             <URL value="@assests/style/style3.css" />
          </stylesheets>
       </JFXButton>
-      <JFXButton layoutX="529.0" layoutY="802.0" onAction="#btnClearOnReservationAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+      <JFXButton disable="true" layoutX="557.0" layoutY="540.0" onAction="#btnClearOnReservationAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
          <styleClass>
             <String fx:value="circle3" />
             <String fx:value="specialTextColour" />
@@ -93,24 +95,24 @@
          </stylesheets>
       </JFXButton>
       <JFXTreeTableRow layoutX="1280.0" layoutY="401.0" />
-      <Label layoutX="807.0" layoutY="331.0" prefHeight="575.0" prefWidth="992.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
-      <TableView fx:id="tblCustomer" layoutX="822.0" layoutY="431.0" prefHeight="449.0" prefWidth="951.0" styleClass="table-cell" stylesheets="@../../../../../../../../../AD1/AD1/New%20folder/Project%20Computer_Shop%20Layered-Architecture/Computer_Shop/src/lk/ijse/computer_Shop/view/assests/style/manage-customers-form.css">
+      <Label layoutX="14.0" layoutY="589.0" prefHeight="402.0" prefWidth="905.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblReservation" layoutX="29.0" layoutY="687.0" prefHeight="287.0" prefWidth="860.0" styleClass="table-cell">
          <columns>
-            <TableColumn fx:id="colReservation" prefWidth="185.0" text="ReservationID" />
-            <TableColumn fx:id="colDate" prefWidth="156.0" text="Date" />
+            <TableColumn fx:id="colReservation" prefWidth="185.0" text="ResrvationID" />
+            <TableColumn fx:id="colRoomTypeId" prefWidth="156.0" text="RoomTypeID" />
             <TableColumn fx:id="colStudentId" prefWidth="178.0" text="StudentID" />
-            <TableColumn fx:id="colRoomTypeId" prefWidth="178.0" text="Room Type ID" />
-            <TableColumn fx:id="colStaus" prefWidth="249.0" text="Staus" />
+            <TableColumn fx:id="colStudentName" prefWidth="178.0" text="StudentName" />
+            <TableColumn fx:id="colDate" prefWidth="160.0" text="Date" />
          </columns>
       </TableView>
-      <Separator layoutX="442.0" layoutY="273.0" prefHeight="2.0" prefWidth="823.0" />
-      <Separator layoutX="432.0" layoutY="912.0" prefHeight="2.0" prefWidth="823.0" />
-      <Label layoutX="841.0" layoutY="341.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+      <Separator layoutX="430.0" layoutY="193.0" prefHeight="2.0" prefWidth="823.0" />
+      <Separator layoutX="998.0" layoutY="1022.0" prefHeight="2.0" prefWidth="823.0" />
+      <Label layoutX="48.0" layoutY="598.0" prefHeight="51.0" prefWidth="314.0" text="Search">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAddNewReservation" layoutX="565.0" layoutY="331.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="214.0" text="+New Reservation">
+      <JFXButton fx:id="btnAddNewReservation" layoutX="36.0" layoutY="131.0" onAction="#btnNewSaveOnAction" prefHeight="39.0" prefWidth="214.0" text="+New Reservation">
          <styleClass>
             <String fx:value="circle3" />
             <String fx:value="specialTextColour" />
@@ -127,16 +129,39 @@
             <URL value="@assests/style/style3.css" />
          </stylesheets>
       </JFXButton>
-      <TextField fx:id="txtReservationId" layoutX="86.0" layoutY="471.0" prefHeight="39.0" prefWidth="236.0" />
-      <TextField fx:id="txtDate" layoutX="471.0" layoutY="471.0" prefHeight="39.0" prefWidth="287.0" />
-      <TextField fx:id="txtStudentId" layoutX="86.0" layoutY="571.0" prefHeight="39.0" prefWidth="287.0" />
-      <TextField fx:id="txtRoomTypeId" layoutX="471.0" layoutY="571.0" prefHeight="39.0" prefWidth="287.0" />
-      <TextField fx:id="txtSearch" layoutX="822.0" layoutY="385.0" prefHeight="39.0" prefWidth="377.0" />
-      <Label layoutX="86.0" layoutY="627.0" prefHeight="51.0" prefWidth="287.0" text="Status :">
+      <TextField fx:id="txtReservationId" layoutX="67.0" layoutY="272.0" prefHeight="39.0" prefWidth="236.0" />
+      <TextField fx:id="txtSearch" layoutX="29.0" layoutY="642.0" prefHeight="39.0" prefWidth="377.0" />
+      <Label layoutX="67.0" layoutY="428.0" prefHeight="51.0" prefWidth="287.0" text="Status :">
          <font>
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="txtStatus" layoutX="86.0" layoutY="678.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtStatus" layoutX="67.0" layoutY="479.0" prefHeight="39.0" prefWidth="314.0" />
+      <ComboBox fx:id="cmdStudentId" layoutX="61.0" layoutY="384.0" onAction="#cmdOnActionStudent" prefHeight="39.0" prefWidth="243.0" />
+      <ComboBox fx:id="cmdRoomTypeId" layoutX="452.0" layoutY="384.0" onAction="#cmdRoomOnAction" prefHeight="39.0" prefWidth="287.0" />
+      <CheckBox layoutX="231.0" layoutY="441.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Pay" />
+      <Label layoutX="960.0" layoutY="311.0" prefHeight="416.0" prefWidth="905.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
+      <TableView fx:id="tblReservation1" layoutX="975.0" layoutY="412.0" prefHeight="298.0" prefWidth="876.0" styleClass="table-cell">
+         <columns>
+            <TableColumn fx:id="colReservation1" prefWidth="185.0" text="ReservationID" />
+            <TableColumn fx:id="colDate1" prefWidth="156.0" text="Date" />
+            <TableColumn fx:id="colStudentId1" prefWidth="178.0" text="StudentID" />
+            <TableColumn fx:id="colRoomTypeId1" prefWidth="178.0" text="Room Type ID" />
+            <TableColumn fx:id="colStaus1" prefWidth="176.0" text="Staus" />
+         </columns>
+      </TableView>
+      <Label layoutX="994.0" layoutY="320.0" prefHeight="51.0" prefWidth="314.0" text="Search">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearch1" layoutX="975.0" layoutY="364.0" prefHeight="39.0" prefWidth="377.0" />
+      <TextField fx:id="txtName" layoutX="446.0" layoutY="272.0" prefHeight="39.0" prefWidth="236.0" />
+      <TextField fx:id="txtRoom" layoutX="452.0" layoutY="479.0" prefHeight="39.0" prefWidth="236.0" />
+      <Label layoutX="449.0" layoutY="431.0" prefHeight="51.0" prefWidth="314.0" text="Room QTY :">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -70,4 +70,15 @@ public class StudentDAOImpl implements StudentDAO {
     public void setSession(Session session) {
         this.session=session;
     }
+
+    @Override
+    public List<String> geIds() throws Exception {
+        String sqlQuery="SELECT id FROM Student ";
+        Query query = session.createQuery(sqlQuery);
+        List<String> list = query.list();
+        session.close();
+        System.out.println(list);
+        return list;
+
+    }
 }

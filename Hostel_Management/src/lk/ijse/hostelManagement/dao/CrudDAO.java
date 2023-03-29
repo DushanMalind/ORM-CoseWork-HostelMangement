@@ -12,4 +12,5 @@ public interface CrudDAO<T,ID>{
     ID generateNewID() throws Exception;
     T get(ID id) throws Exception;
 
+
 }

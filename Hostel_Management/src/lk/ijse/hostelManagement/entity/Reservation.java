@@ -22,7 +22,21 @@ public class Reservation {
     @JoinColumn(name = "roomTypeId",referencedColumnName = "roomTypeId",insertable = false,updatable = false)
     private Room room;
 
+    public Student getStudent() {
+        return student;
+    }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
     public Reservation() {
     }
@@ -31,6 +45,14 @@ public class Reservation {
         this.resId = resId;
         this.date = date;
         this.status = status;
+    }
+
+    public Reservation(String resId, Date date, String status, Student student, Room room) {
+        this.resId = resId;
+        this.date = date;
+        this.status = status;
+        this.student = student;
+        this.room = room;
     }
 
     public String getResId() {
