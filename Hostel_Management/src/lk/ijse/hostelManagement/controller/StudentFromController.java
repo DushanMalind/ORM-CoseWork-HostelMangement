@@ -176,7 +176,7 @@ public class StudentFromController {
 
     @FXML
     void btnNewSaveOnAction(ActionEvent event) {
-        txtStudentId.setDisable(false);
+        txtStudentId.setEditable(false);
         txtName.setDisable(false);
         txtAddress.setDisable(false);
         txtContact.setDisable(false);

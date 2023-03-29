@@ -17,7 +17,7 @@ public class RoomDAOImpl implements RoomDAO {
     public List<Room> getAll() throws SQLException, ClassNotFoundException {
         String sql="FROM Room";
         Query query=session.createQuery(sql);
-        List list= query.list();
+        List<Room> list= query.list();
         session.close();
         return list;
     }
@@ -45,10 +45,11 @@ public class RoomDAOImpl implements RoomDAO {
         session.close();
         if (room!=null){
             String lastId=room.getRoomTypeId();
-            int newCustomerId=Integer.parseInt(lastId.replace("R00-",""))+1;
-            return String.format("R00-%03d",newCustomerId);
+            int newCustomerId=Integer.parseInt(lastId.replace("RES-",""))+1;
+            System.out.println(newCustomerId);
+            return String.format("RES-%03d",newCustomerId);
         }
-        return "R00-001";
+        return "RES-001";
     }
 
     @Override

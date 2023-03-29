@@ -25,6 +25,8 @@ public class ReservationBOImpl implements ReservationBO {
     private Session session;
     @Override
     public List<ReservationDTO> getAllReservation() throws Exception {
+        session= SessionFactoryConfiguaration.getInstance().getSession();
+        reservationDAO.setSession(session);
         List<Reservation>allReservation= reservationDAO.getAll();
         List<ReservationDTO>reservationDTOList=new ArrayList<>();
         for (Reservation reservation : allReservation){
