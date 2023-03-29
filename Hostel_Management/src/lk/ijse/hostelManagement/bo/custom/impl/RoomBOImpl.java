@@ -85,6 +85,8 @@ public class RoomBOImpl implements RoomBO {
 
     @Override
     public String generateRoomId() throws Exception {
+        session= SessionFactoryConfiguaration.getInstance().getSession();
+        roomDAO.setSession(session);
         return roomDAO.generateNewID();
     }
 }

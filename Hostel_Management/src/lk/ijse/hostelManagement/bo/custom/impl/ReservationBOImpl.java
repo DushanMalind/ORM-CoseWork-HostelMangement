@@ -93,6 +93,8 @@ public class ReservationBOImpl implements ReservationBO {
 
     @Override
     public String generateReservationId() throws Exception {
+        session= SessionFactoryConfiguaration.getInstance().getSession();
+        reservationDAO.setSession(session);
         return reservationDAO.generateNewID();
     }
 

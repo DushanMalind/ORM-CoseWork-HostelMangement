@@ -37,18 +37,11 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        Users users=null;
-        try {
-            String sql="FROM Reservation ORDER BY id desc";
-            Query query=session.createQuery(sql);
-            query.setMaxResults(1);
-            users= (Users) query.uniqueResult();
-        }catch (Exception e){
-
-        }
-        String lastId=users.getId();
-
-        if (lastId!=null){
+        String sql="FROM Student ORDER BY id DESC";
+        Student student= (Student) session.createQuery(sql).setMaxResults(1).uniqueResult();
+        session.close();
+        if (student!=null){
+            String lastId=student.getStudentId();
             int newCustomerId=Integer.parseInt(lastId.replace("U00-",""))+1;
             return String.format("U00-%03d",newCustomerId);
         }

@@ -86,6 +86,8 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public String generateUserId() throws Exception {
+        session=SessionFactoryConfiguaration.getInstance().getSession();
+        userDAO.setSession(session);
         return userDAO.generateNewID();
     }
 }

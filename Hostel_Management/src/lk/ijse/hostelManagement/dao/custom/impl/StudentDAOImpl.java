@@ -48,19 +48,13 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
-        Student student=null;
-        try {
-            String sql="FROM Reservation ORDER BY id desc";
-            Query query=session.createQuery(sql);
-            query.setMaxResults(1);
-            student= (Student) query.uniqueResult();
-        }catch (Exception e){
+    public String generateNewID() throws Exception {
 
-        }
-        String lastId=student.getStudentId();
-
-        if (lastId!=null){
+            String sql="FROM Student ORDER BY id DESC";
+            Student student= (Student) session.createQuery(sql).setMaxResults(1).uniqueResult();
+            session.close();
+        if (student!=null){
+            String lastId=student.getStudentId();
             int newCustomerId=Integer.parseInt(lastId.replace("S00-",""))+1;
             return String.format("S00-%03d",newCustomerId);
         }

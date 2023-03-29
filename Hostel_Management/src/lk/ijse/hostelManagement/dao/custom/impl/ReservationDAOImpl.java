@@ -2,6 +2,7 @@ package lk.ijse.hostelManagement.dao.custom.impl;
 
 import lk.ijse.hostelManagement.dao.custom.ReservationDAO;
 import lk.ijse.hostelManagement.entity.Reservation;
+import lk.ijse.hostelManagement.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -36,18 +37,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        Reservation reservation=null;
-        try {
-            String sql="FROM Reservation ORDER BY id desc";
-            Query query=session.createQuery(sql);
-            query.setMaxResults(1);
-            reservation= (Reservation) query.uniqueResult();
-        }catch (Exception e){
-
-        }
-        String lastId=reservation.getResId();
-
-        if (lastId!=null){
+        String sql="FROM Reservation ORDER BY id DESC";
+        Reservation reservation= (Reservation) session.createQuery(sql).setMaxResults(1).uniqueResult();
+        session.close();
+        if (reservation!=null){
+            String lastId=reservation.getResId();
             int newCustomerId=Integer.parseInt(lastId.replace("RE0-",""))+1;
             return String.format("RE0-%03d",newCustomerId);
         }

@@ -76,7 +76,7 @@
             <URL value="@assests/style/style3.css" />
          </stylesheets>
       </JFXButton>
-      <JFXButton layoutX="519.0" layoutY="792.0" onAction="#btnClearOnStudentAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+      <JFXButton fx:id="btnDelete" layoutX="519.0" layoutY="792.0" onAction="#btnClearOnStudentAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
          <styleClass>
             <String fx:value="circle3" />
             <String fx:value="specialTextColour" />
