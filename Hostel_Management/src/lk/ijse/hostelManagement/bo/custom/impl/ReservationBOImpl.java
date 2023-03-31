@@ -2,6 +2,7 @@ package lk.ijse.hostelManagement.bo.custom.impl;
 
 import lk.ijse.hostelManagement.bo.custom.ReservationBO;
 import lk.ijse.hostelManagement.dao.DAOFactory;
+import lk.ijse.hostelManagement.dao.custom.QueryDAO;
 import lk.ijse.hostelManagement.dao.custom.ReservationDAO;
 import lk.ijse.hostelManagement.dao.custom.RoomDAO;
 import lk.ijse.hostelManagement.dao.custom.StudentDAO;
@@ -11,6 +12,7 @@ import lk.ijse.hostelManagement.entity.Student;
 import lk.ijse.hostelManagement.model.ReservationDTO;
 import lk.ijse.hostelManagement.model.RoomDTO;
 import lk.ijse.hostelManagement.model.StudentDTO;
+import lk.ijse.hostelManagement.projection.StudentDetailsDTO;
 import lk.ijse.hostelManagement.util.SessionFactoryConfiguaration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,6 +24,7 @@ public class ReservationBOImpl implements ReservationBO {
     ReservationDAO reservationDAO= (ReservationDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.RESRVATIONDAO);
     StudentDAO studentDAO= (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENTDAO);
     RoomDAO roomDAO= (RoomDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ROOMDAO);
+    QueryDAO queryDAO= (QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERY);
     private Session session;
     @Override
     public List<ReservationDTO> getAllReservation() throws Exception {
@@ -156,7 +159,7 @@ public class ReservationBOImpl implements ReservationBO {
         try {
             session= SessionFactoryConfiguaration.getInstance().getSession();
             studentDAO.setSession(session);
-            Student student=studentDAO.get(id);
+            Student student=studentDAO.getObject(id);
             session.close();
             return new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),student.getContact(),
                     student.getDob(),student.getGender());
@@ -171,7 +174,7 @@ public class ReservationBOImpl implements ReservationBO {
         try {
             session= SessionFactoryConfiguaration.getInstance().getSession();
             roomDAO.setSession(session);
-            Room room=roomDAO.get(id);
+            Room room=roomDAO.getObject(id);
             session.close();
             return new RoomDTO(room.getRoomTypeId(),room.getType(),room.getKeyMoney(),room.getQty());
         }catch (Exception e){
@@ -248,6 +251,29 @@ public class ReservationBOImpl implements ReservationBO {
             return false;
         }
 
+    }
+
+    @Override
+    public List<StudentDetailsDTO> getAllProjection() {
+        session=SessionFactoryConfiguaration.getInstance().getSession();
+        return queryDAO.getAllStudentProjection();
+    }
+
+    @Override
+    public boolean checkStatusClick(String id, String status) {
+        session=SessionFactoryConfiguaration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
+        boolean isUpdate=false;
+        try {
+            reservationDAO.setSession(session);
+            isUpdate=reservationDAO.changeCheckBOXValue(id,status);
+            transaction.commit();
+            session.close();
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+        }
+        return isUpdate;
     }
 
 

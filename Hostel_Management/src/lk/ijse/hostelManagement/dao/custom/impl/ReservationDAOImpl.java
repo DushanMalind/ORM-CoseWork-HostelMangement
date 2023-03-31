@@ -49,12 +49,22 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public Reservation get(String id) throws SQLException, ClassNotFoundException {
+    public Reservation getObject(String id) throws SQLException, ClassNotFoundException {
         return session.get(Reservation.class,id);
     }
 
     @Override
     public void setSession(Session session) {
         this.session=session;
+    }
+
+    @Override
+    public boolean changeCheckBOXValue(String id, String status) {
+        String hql="update Reservation r set r.status=:sts Where r.resId=:rid";
+        Query query=session.createQuery(hql);
+        query.setParameter("sts",status);
+        query.setParameter("rid",status);
+        int value= query.executeUpdate();
+        return value>=0;
     }
 }

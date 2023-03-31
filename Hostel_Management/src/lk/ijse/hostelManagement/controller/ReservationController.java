@@ -21,6 +21,7 @@ import lk.ijse.hostelManagement.bo.custom.StudentBO;
 import lk.ijse.hostelManagement.model.ReservationDTO;
 import lk.ijse.hostelManagement.model.RoomDTO;
 import lk.ijse.hostelManagement.model.StudentDTO;
+import lk.ijse.hostelManagement.projection.StudentDetailsDTO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -77,7 +78,7 @@ public class ReservationController {
     private AnchorPane root;
 
     @FXML
-    private TableView<?> tblReservation;
+    private TableView<StudentDetailsDTO> tblReservation;
 
     @FXML
     private TextField txtReservationId;
@@ -89,21 +90,41 @@ public class ReservationController {
     private TextField txtStatus;
     private StudentDTO studentData;
     private RoomDTO roomData;
+    private String id;
 
     ReservationBO reservationBO= (ReservationBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.RESERVATIONBO);
-    RoomBO roomBO= (RoomBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.ROOMBO);
-    StudentBO studentBO= (StudentBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.STUDENTBO);
 
     public void initialize() throws Exception {
         loadAllStudents();
         loadAllRooms();
         loadAll();
+        setAllProjection();
 
         colReservation1.setCellValueFactory(new PropertyValueFactory<>("resId"));
         colStudentId1.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colRoomTypeId1.setCellValueFactory(new PropertyValueFactory<>("roomId"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colRoomQTY.setCellValueFactory(new PropertyValueFactory<>("date"));
         colStaus1.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+
+        colReservation.setCellValueFactory(new PropertyValueFactory<>("resId"));
+        colRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+
+        tblReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+            btnSave.setText(newValue!=null ? "update" : "save");
+
+            if (newValue!=null){
+                if (newValue != null) {
+                    cbxStatus.setDisable(false);
+                    id= newValue.getResId();
+                }
+            }
+        });
 
 
     }
@@ -186,6 +207,31 @@ public class ReservationController {
             new Alert(Alert.AlertType.CONFIRMATION, "Room Reserved").show();
             tblReservation1.getItems().clear();
             loadAll();
+
+        }else{
+            if (cbxStatus.isSelected()){
+                btnSave.setDisable(false);
+                String status="paid";
+
+                boolean isUpdated=reservationBO.checkStatusClick(id,status);
+                if (isUpdated){
+                    tblReservation.getItems().clear();
+                    tblReservation1.getItems().clear();
+
+                    new Alert(Alert.AlertType.CONFIRMATION, "Status updated").show();
+
+                    loadAll();
+                    setAllProjection();
+
+                    cbxStatus.setDisable(true);
+                    btnSave.setDisable(true);
+                    tblReservation.refresh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR, "Error").show();
+                }
+            }else if (!cbxStatus.isSelected())btnSave.setDisable(true);
+
+
         }
     }
 
@@ -249,6 +295,24 @@ public class ReservationController {
     public void cmdRoomOnAction(ActionEvent event) throws Exception {
         roomData=getRoomDTO();
         txtRoom.setText(String.valueOf(roomData.getQty()));
+    }
+
+    private void setAllProjection(){
+        List<StudentDetailsDTO>list=reservationBO.getAllProjection();
+        ObservableList<StudentDetailsDTO>studentDetailsDTOS=FXCollections.observableList(list);
+
+        tblReservation.setItems(studentDetailsDTOS);
+    }
+
+    public void cbxStatusOnAction(ActionEvent event) {
+       /* if (btnSave.getText().equals("Update")){
+            if (cbxStatus.isSelected()){
+                btnSave.setDisable(false);
+
+                String status="paid";
+
+            }else if (!cbxStatus.isSelected())btnSave.setDisable(true);
+        }*/
     }
 }
 

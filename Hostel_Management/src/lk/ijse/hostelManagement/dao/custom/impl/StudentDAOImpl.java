@@ -62,7 +62,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student get(String id) throws SQLException, ClassNotFoundException {
+    public Student getObject(String id) throws Exception {
         return session.get(Student.class,id);
     }
 

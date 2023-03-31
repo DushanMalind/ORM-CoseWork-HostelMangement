@@ -7,19 +7,19 @@ import java.sql.Date;
 @Table(name = "Reservation")
 public class Reservation {
     @Id
-    @Column(name = "reservationId",length = 10)
+    @Column(length = 10)
     private String resId;
-    @Column(name = "data")
+    @Column()
     private Date date;
-    @Column(name = "status")
+    @Column()
     private String status;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "studentId")
+    @JoinColumn(referencedColumnName = "studentId",nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "roomTypeId")
+    @JoinColumn(referencedColumnName = "roomTypeId",nullable = false)
     private Room room;
 
     public Reservation() {

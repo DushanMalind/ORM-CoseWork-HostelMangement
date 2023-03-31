@@ -10,7 +10,7 @@ public interface CrudDAO<T,ID>{
     void update(T dto) throws Exception;
     void delete(T dto) throws Exception;
     ID generateNewID() throws Exception;
-    T get(ID id) throws Exception;
+    T getObject(ID id) throws Exception;
 
 
 }

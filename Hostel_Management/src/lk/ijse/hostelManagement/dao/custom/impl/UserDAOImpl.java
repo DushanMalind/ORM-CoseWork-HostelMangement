@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Users get(String id) throws SQLException, ClassNotFoundException {
+    public Users getObject(String id) throws SQLException, ClassNotFoundException {
         return session.get(Users.class,id);
     }
 
