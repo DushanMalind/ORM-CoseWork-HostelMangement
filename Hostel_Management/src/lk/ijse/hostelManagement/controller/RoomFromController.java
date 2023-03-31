@@ -182,9 +182,11 @@ public class RoomFromController {
         if (!type.matches("[A-Za-z0-9 ]+")){
             new Alert(Alert.AlertType.ERROR, "Invalid Type").show();
             txtType.requestFocus();
+            return;
         }else if (!keyMoney.matches("^[0-9]+[.]?[0-9]*$")){
             new Alert(Alert.AlertType.ERROR, "Invalid keyMoney").show();
             txtKeyMoney.requestFocus();
+            return;
         }else if (!txtQty.getText().matches("^\\d+$")){
             new Alert(Alert.AlertType.ERROR, "Invalid keyMoney").show();
             txtQty.getText();

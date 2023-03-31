@@ -139,7 +139,7 @@
             <Font name="Arial Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDob" layoutX="73.0" layoutY="641.0" prefHeight="39.0" prefWidth="287.0" />
+      <TextField fx:id="txtDob" layoutX="73.0" layoutY="641.0" prefHeight="39.0" prefWidth="287.0" promptText="EX:2000-06-24" />
       <Label layoutX="452.0" layoutY="596.0" prefHeight="51.0" prefWidth="287.0" text="Student Gender :">
          <font>
             <Font name="Arial Bold" size="26.0" />

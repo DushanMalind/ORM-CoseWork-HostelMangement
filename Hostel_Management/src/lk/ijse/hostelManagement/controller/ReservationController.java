@@ -41,6 +41,7 @@ public class ReservationController {
     public TableColumn colRoomQTY;
     public TableColumn colName;
     public CheckBox cbxStatus;
+    public JFXButton btnClear;
 
     @FXML
     private TextField txtRoom;
@@ -100,6 +101,7 @@ public class ReservationController {
         loadAll();
         setAllProjection();
         setCheckStatus();
+        iniUI();
 
         colReservation1.setCellValueFactory(new PropertyValueFactory<>("resId"));
         colStudentId1.setCellValueFactory(new PropertyValueFactory<>("studentId"));
@@ -122,7 +124,7 @@ public class ReservationController {
 
     void setCheckStatus(){
         tblReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
+            btnClear.setDisable(newValue==null);
             btnSave.setText(newValue!=null ? "update" : "save");
 
             if (newValue!=null){
@@ -177,6 +179,12 @@ public class ReservationController {
 
     @FXML
     void btnClearOnReservationAction(ActionEvent event) throws Exception {
+        txtReservationId.clear();
+        txtRoom.clear();
+        cmdStudentId.getSelectionModel().clearSelection();
+        cmdRoomTypeId.getSelectionModel().clearSelection();
+        txtName.clear();
+
 
     }
 
@@ -199,9 +207,27 @@ public class ReservationController {
         return "RE0-001";
     }
 
+    public void iniUI(){
+        cmdStudentId.setDisable(true);
+        cmdRoomTypeId.setDisable(true);
+        btnSave.setDisable(true);
+        btnClear.setDisable(true);
+        txtName.setEditable(false);
+        txtRoom.setEditable(false);
+
+    }
+
     @FXML
     void btnNewSaveOnAction(ActionEvent event) {
+        txtReservationId.setEditable(false);
+        txtName.setEditable(false);
+        txtRoom.setEditable(false);
+        cmdStudentId.setDisable(false);
+        cmdRoomTypeId.setDisable(false);
         txtReservationId.setText(generateNewIds());
+        btnSave.setText("Save Reservation");
+        btnSave.setDisable(false);
+        btnClear.setDisable(false);
     }
 
 
@@ -214,6 +240,7 @@ public class ReservationController {
             if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION, "Room Reserved").show();
                 tblReservation1.getItems().clear();
+                tblReservation.refresh();
                 loadAll();
 
             }else {
@@ -300,8 +327,6 @@ public class ReservationController {
                 studentData,
                 roomData
                         );
-
-
     }
 
     private boolean reserveRoom(ReservationDTO reservationDTO) throws Exception {
@@ -347,8 +372,9 @@ public class ReservationController {
         List<StudentDetailsDTO>list=reservationBO.getAllProjection();
         ObservableList<StudentDetailsDTO>studentDetailsDTOS=FXCollections.observableList(list);
 
-        tblReservation.setItems(studentDetailsDTOS);
         tblReservation.refresh();
+        tblReservation.setItems(studentDetailsDTOS);
+
     }
 
     public void cbxStatusOnAction(ActionEvent event) {

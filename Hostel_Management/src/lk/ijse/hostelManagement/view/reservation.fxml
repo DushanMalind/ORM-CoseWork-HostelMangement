@@ -77,7 +77,7 @@
             <URL value="@assests/style/style3.css" />
          </stylesheets>
       </JFXButton>
-      <JFXButton disable="true" layoutX="557.0" layoutY="540.0" onAction="#btnClearOnReservationAction" prefHeight="39.0" prefWidth="191.0" text="Delete">
+      <JFXButton fx:id="btnClear" layoutX="557.0" layoutY="540.0" onAction="#btnClearOnReservationAction" prefHeight="39.0" prefWidth="191.0" text="Clear">
          <styleClass>
             <String fx:value="circle3" />
             <String fx:value="specialTextColour" />
@@ -161,6 +161,16 @@
       <Label layoutX="449.0" layoutY="431.0" prefHeight="51.0" prefWidth="314.0" text="Room QTY :">
          <font>
             <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="185.0" layoutY="598.0" prefHeight="39.0" prefWidth="423.0" text="Unpaid AllStudent" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="1360.0" layoutY="326.0" prefHeight="39.0" prefWidth="423.0" text="Paid AllStudent" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
          </font>
       </Label>
    </children>

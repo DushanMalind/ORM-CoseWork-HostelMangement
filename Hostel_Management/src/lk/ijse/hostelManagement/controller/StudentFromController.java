@@ -216,16 +216,20 @@ public class StudentFromController {
         if (!name.matches(".*[a-zA-Z0-9]{4,}")){
             new Alert(Alert.AlertType.ERROR, "Invalid name").show();
             txtName.requestFocus();
+            return;
         }else if (!address.matches(".*[a-zA-Z0-9]{4,}")){
             new Alert(Alert.AlertType.ERROR, "Address should not ").show();
             txtAddress.requestFocus();
+            return;
         }else if (!contact.matches(".*(?:7|0|(?:\\\\+94))[0-9]{9,10}")){
             new Alert(Alert.AlertType.ERROR, "Contact should not ").show();
-        }/*else if (!dob.matches("")) {
+            txtContact.requestFocus();
+            return;
+        }else if (!dob.matches("\\b\\d{4}-\\d{2}-\\d{2}\\b")) {
             new Alert(Alert.AlertType.ERROR, "Dob should not ").show();
             txtDob.requestFocus();
             return;
-        }*/
+        }
 
         if (btnSave.getText().equalsIgnoreCase("Save Student")){
             try {
