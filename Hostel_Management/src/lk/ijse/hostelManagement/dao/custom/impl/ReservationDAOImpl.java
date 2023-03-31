@@ -63,7 +63,7 @@ public class ReservationDAOImpl implements ReservationDAO {
         String hql="update Reservation r set r.status=:sts Where r.resId=:rid";
         Query query=session.createQuery(hql);
         query.setParameter("sts",status);
-        query.setParameter("rid",status);
+        query.setParameter("rid",id);
         int value= query.executeUpdate();
         return value>=0;
     }

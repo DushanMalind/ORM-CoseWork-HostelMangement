@@ -62,9 +62,10 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student getObject(String id) throws Exception {
-        return session.get(Student.class,id);
+    public Student getObject(String s) throws Exception {
+        return session.get(Student.class,s);
     }
+
 
     @Override
     public void setSession(Session session) {

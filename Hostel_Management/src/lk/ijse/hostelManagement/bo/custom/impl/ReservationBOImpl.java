@@ -158,13 +158,16 @@ public class ReservationBOImpl implements ReservationBO {
     public StudentDTO getStudents(String id) throws Exception {
         try {
             session= SessionFactoryConfiguaration.getInstance().getSession();
+            Transaction transaction=session.beginTransaction();
             studentDAO.setSession(session);
             Student student=studentDAO.getObject(id);
+            transaction.commit();
             session.close();
             return new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),student.getContact(),
                     student.getDob(),student.getGender());
         }catch (Exception e){
-            throw e;
+            session.close();
+            return null;
         }
 
     }
@@ -173,12 +176,15 @@ public class ReservationBOImpl implements ReservationBO {
     public RoomDTO getRooms(String id) throws Exception {
         try {
             session= SessionFactoryConfiguaration.getInstance().getSession();
+            Transaction transaction=session.beginTransaction();
             roomDAO.setSession(session);
             Room room=roomDAO.getObject(id);
+            transaction.commit();
             session.close();
             return new RoomDTO(room.getRoomTypeId(),room.getType(),room.getKeyMoney(),room.getQty());
         }catch (Exception e){
-            throw e;
+            session.close();
+            return null;
         }
 
     }

@@ -53,8 +53,8 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room getObject(String id) throws SQLException, ClassNotFoundException {
-        return session.get(Room.class,id);
+    public Room getObject(String s) throws SQLException, ClassNotFoundException {
+        return session.get(Room.class,s);
     }
 
     @Override

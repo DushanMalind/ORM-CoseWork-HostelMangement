@@ -14,7 +14,7 @@ public class QueryDAOImpl implements QueryDAO {
     @Override
     public List<StudentDetailsDTO> getAllStudentProjection() {
         session= SessionFactoryConfiguaration.getInstance().getSession();
-        String sql="SELECT new lk.ijse.hostelManagement.projection.StudentDetailsDTO(s.id,s.name,s.contact,r.date,r.resId,r.room) FROM Student s INNER join s.reservationList r WHERE r.status='unPaid'";
+        String sql="SELECT new lk.ijse.hostelManagement.projection.StudentDetailsDTO(s.id,s.name,s.contact,r.date,r.id,r.room) FROM Student s INNER join s.reservationList r WHERE r.status='unPaid'";
 
         Query query=session.createQuery(sql);
         List<StudentDetailsDTO>list=query.list();

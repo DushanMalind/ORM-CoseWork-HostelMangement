@@ -99,6 +99,7 @@ public class ReservationController {
         loadAllRooms();
         loadAll();
         setAllProjection();
+        setCheckStatus();
 
         colReservation1.setCellValueFactory(new PropertyValueFactory<>("resId"));
         colStudentId1.setCellValueFactory(new PropertyValueFactory<>("studentId"));
@@ -114,6 +115,12 @@ public class ReservationController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
 
+
+
+
+    }
+
+    void setCheckStatus(){
         tblReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
             btnSave.setText(newValue!=null ? "update" : "save");
@@ -125,8 +132,6 @@ public class ReservationController {
                 }
             }
         });
-
-
     }
 
 
@@ -180,6 +185,7 @@ public class ReservationController {
         ObservableList<ReservationDTO>dtoObservableList=FXCollections.observableList(reservationDTOList);
 
         tblReservation1.setItems(dtoObservableList);
+
     }
 
 
@@ -202,11 +208,50 @@ public class ReservationController {
 
     @FXML
     void btnSaveOnReservationAction(ActionEvent event) throws Exception {
+
+        if (btnSave.getText().equals("Save Reservation")){
+            boolean isSaved=reserveRoom(getData());
+            if (isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION, "Room Reserved").show();
+                tblReservation1.getItems().clear();
+                loadAll();
+
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Error").show();
+            }
+        }else if(btnSave.getText().equals("update")){
+            if (cbxStatus.isSelected()){
+                btnSave.setDisable(false);
+                String status="paid";
+
+                boolean isUpdated=reservationBO.checkStatusClick(id,status);
+                tblReservation.refresh();
+                if (isUpdated){
+                    tblReservation.getItems().clear();
+                    tblReservation1.getItems().clear();
+
+                    new Alert(Alert.AlertType.CONFIRMATION, "Status updated").show();
+
+                    loadAll();
+                    setAllProjection();
+
+                    cbxStatus.setDisable(true);
+                    btnSave.setDisable(true);
+                    tblReservation.refresh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR, "Error").show();
+                }
+            }
+        }
+
+/*
+
         boolean isSaved=reserveRoom(getData());
         if (isSaved){
             new Alert(Alert.AlertType.CONFIRMATION, "Room Reserved").show();
             tblReservation1.getItems().clear();
             loadAll();
+
 
         }else{
             if (cbxStatus.isSelected()){
@@ -226,13 +271,14 @@ public class ReservationController {
                     cbxStatus.setDisable(true);
                     btnSave.setDisable(true);
                     tblReservation.refresh();
-                }else {
+                }else if (){
                     new Alert(Alert.AlertType.ERROR, "Error").show();
                 }
             }else if (!cbxStatus.isSelected())btnSave.setDisable(true);
+*/
 
 
-        }
+
     }
 
     private ReservationDTO getData() throws Exception {
@@ -248,12 +294,12 @@ public class ReservationController {
         RoomDTO roomData=getRoomDTO();
 
         return new ReservationDTO(
-                        txtReservationId.getText(),
-                        sqlDate,
+                                txtReservationId.getText(),
+                                sqlDate,
                 status,
                 studentData,
                 roomData
-                );
+                        );
 
 
     }
@@ -302,17 +348,18 @@ public class ReservationController {
         ObservableList<StudentDetailsDTO>studentDetailsDTOS=FXCollections.observableList(list);
 
         tblReservation.setItems(studentDetailsDTOS);
+        tblReservation.refresh();
     }
 
     public void cbxStatusOnAction(ActionEvent event) {
-       /* if (btnSave.getText().equals("Update")){
+        if (btnSave.getText().equals("Update")){
             if (cbxStatus.isSelected()){
                 btnSave.setDisable(false);
 
                 String status="paid";
 
             }else if (!cbxStatus.isSelected())btnSave.setDisable(true);
-        }*/
+        }
     }
 }
 
