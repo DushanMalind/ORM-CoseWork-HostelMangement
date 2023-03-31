@@ -15,28 +15,12 @@ public class Reservation {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "studentId",referencedColumnName = "studentId",insertable = false,updatable = false)
+    @JoinColumn(referencedColumnName = "studentId")
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "roomTypeId",referencedColumnName = "roomTypeId",insertable = false,updatable = false)
+    @JoinColumn(referencedColumnName = "roomTypeId")
     private Room room;
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 
     public Reservation() {
     }
@@ -52,6 +36,24 @@ public class Reservation {
         this.date = date;
         this.status = status;
         this.student = student;
+        this.room = room;
+    }
+
+
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
         this.room = room;
     }
 

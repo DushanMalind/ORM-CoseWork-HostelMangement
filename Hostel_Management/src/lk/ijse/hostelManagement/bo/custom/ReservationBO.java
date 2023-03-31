@@ -30,4 +30,6 @@ public interface ReservationBO extends SuperBO {
     List<StudentDTO> geAllStudents() throws Exception;
 
     List<RoomDTO>getAllRooms() throws Exception;
+
+    boolean updateRoomQty(RoomDTO roomDTO) throws Exception;
 }

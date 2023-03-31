@@ -15,8 +15,7 @@ public class ReservationDTO {
     private String studentId;
     private String roomId;
 
-    public ReservationDTO() {
-    }
+
 
     public ReservationDTO(String resId, Date date, String status) {
         this.resId = resId;
@@ -24,14 +23,14 @@ public class ReservationDTO {
         this.status = status;
     }
 
-    public ReservationDTO(String resId, Date date, String status, StudentDTO studentDTO, RoomDTO roomDTO, String studentId, String roomId) {
+    public ReservationDTO(String resId, Date date, String status, StudentDTO studentDTO, RoomDTO roomDTO) {
         this.resId = resId;
         this.date = date;
         this.status = status;
         this.studentDTO = studentDTO;
         this.roomDTO = roomDTO;
-        this.studentId = studentId;
-        this.roomId = roomId;
+        studentId=studentDTO.getStudentId();
+        roomId=roomDTO.getRoomTypeId();
     }
 
     public String getResId() {

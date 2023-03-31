@@ -139,15 +139,15 @@
       <TextField fx:id="txtStatus" layoutX="67.0" layoutY="479.0" prefHeight="39.0" prefWidth="314.0" />
       <ComboBox fx:id="cmdStudentId" layoutX="61.0" layoutY="384.0" onAction="#cmdOnActionStudent" prefHeight="39.0" prefWidth="243.0" />
       <ComboBox fx:id="cmdRoomTypeId" layoutX="452.0" layoutY="384.0" onAction="#cmdRoomOnAction" prefHeight="39.0" prefWidth="287.0" />
-      <CheckBox layoutX="231.0" layoutY="441.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Pay" />
+      <CheckBox fx:id="cbxStatus" layoutX="231.0" layoutY="441.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Pay" />
       <Label layoutX="960.0" layoutY="311.0" prefHeight="416.0" prefWidth="905.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
-      <TableView fx:id="tblReservation1" layoutX="975.0" layoutY="412.0" prefHeight="298.0" prefWidth="876.0" styleClass="table-cell">
+      <TableView fx:id="tblReservation1" layoutX="1064.0" layoutY="411.0" prefHeight="298.0" prefWidth="721.0" styleClass="table-cell">
          <columns>
-            <TableColumn fx:id="colReservation1" prefWidth="185.0" text="ReservationID" />
-            <TableColumn fx:id="colDate1" prefWidth="156.0" text="Date" />
-            <TableColumn fx:id="colStudentId1" prefWidth="178.0" text="StudentID" />
-            <TableColumn fx:id="colRoomTypeId1" prefWidth="178.0" text="Room Type ID" />
-            <TableColumn fx:id="colStaus1" prefWidth="176.0" text="Staus" />
+            <TableColumn fx:id="colReservation1" prefWidth="150.39996337890625" text="ReservationID" />
+            <TableColumn fx:id="colStudentId1" prefWidth="141.0" text="StudentID" />
+            <TableColumn fx:id="colRoomTypeId1" prefWidth="102.0" text="Room Type ID" />
+            <TableColumn fx:id="colRoomQTY" prefWidth="102.0" text="RoomQTY" />
+            <TableColumn fx:id="colStaus1" prefWidth="216.0" text="Staus" />
          </columns>
       </TableView>
       <Label layoutX="994.0" layoutY="320.0" prefHeight="51.0" prefWidth="314.0" text="Search">

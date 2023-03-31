@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -17,24 +18,28 @@ import lk.ijse.hostelManagement.bo.BOFactory;
 import lk.ijse.hostelManagement.bo.custom.ReservationBO;
 import lk.ijse.hostelManagement.bo.custom.RoomBO;
 import lk.ijse.hostelManagement.bo.custom.StudentBO;
+import lk.ijse.hostelManagement.model.ReservationDTO;
 import lk.ijse.hostelManagement.model.RoomDTO;
 import lk.ijse.hostelManagement.model.StudentDTO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ReservationController {
 
     public TableColumn colStudentName;
-    public TableView tblReservation1;
+    public TableView <ReservationDTO>tblReservation1;
     public TableColumn colReservation1;
-    public TableColumn colDate1;
     public TableColumn colStudentId1;
     public TableColumn colRoomTypeId1;
     public TableColumn colStaus1;
     public TextField txtSearch1;
+    public TableColumn colRoomQTY;
+    public TableColumn colName;
+    public CheckBox cbxStatus;
 
     @FXML
     private TextField txtRoom;
@@ -92,23 +97,18 @@ public class ReservationController {
     public void initialize() throws Exception {
         loadAllStudents();
         loadAllRooms();
+        loadAll();
+
+        colReservation1.setCellValueFactory(new PropertyValueFactory<>("resId"));
+        colStudentId1.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colRoomTypeId1.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colStaus1.setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
     }
 
 
-
- /*   private void setIds() throws Exception{
-        List<String> studentIds = reservationBO.getStudentIds();
-        ObservableList<String> studentList= FXCollections.observableList(studentIds);
-        cmdStudentId.setItems(studentList);
-
-        List<String> roomIds = reservationBO.getRoomIds();
-        ObservableList<String> roomList=FXCollections.observableList(roomIds);
-        cmdRoomTypeId.setItems(roomList);
-
-    }
-*/
     private void  loadAllStudents(){
         try {
             ArrayList<StudentDTO>allStudent= (ArrayList<StudentDTO>) reservationBO.geAllStudents();
@@ -150,8 +150,15 @@ public class ReservationController {
 
 
     @FXML
-    void btnClearOnReservationAction(ActionEvent event) {
+    void btnClearOnReservationAction(ActionEvent event) throws Exception {
 
+    }
+
+    private void loadAll() throws Exception {
+        List<ReservationDTO>reservationDTOList=reservationBO.getAllReservation();
+        ObservableList<ReservationDTO>dtoObservableList=FXCollections.observableList(reservationDTOList);
+
+        tblReservation1.setItems(dtoObservableList);
     }
 
 
@@ -167,15 +174,60 @@ public class ReservationController {
 
     @FXML
     void btnNewSaveOnAction(ActionEvent event) {
-
         txtReservationId.setText(generateNewIds());
     }
 
 
 
     @FXML
-    void btnSaveOnReservationAction(ActionEvent event) {
+    void btnSaveOnReservationAction(ActionEvent event) throws Exception {
+        boolean isSaved=reserveRoom(getData());
+        if (isSaved){
+            new Alert(Alert.AlertType.CONFIRMATION, "Room Reserved").show();
+            tblReservation1.getItems().clear();
+            loadAll();
+        }
+    }
 
+    private ReservationDTO getData() throws Exception {
+
+        String status="unPaid";
+        if (cbxStatus.isSelected()){
+            status="paid";
+        }
+
+        java.sql.Date sqlDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        StudentDTO studentData= getStudentDTO();
+        RoomDTO roomData=getRoomDTO();
+
+        return new ReservationDTO(
+                        txtReservationId.getText(),
+                        sqlDate,
+                status,
+                studentData,
+                roomData
+                );
+
+
+    }
+
+    private boolean reserveRoom(ReservationDTO reservationDTO) throws Exception {
+        boolean isSaved= Boolean.parseBoolean(reservationBO.saveReservation(reservationDTO));
+
+        if (!isSaved){
+            return false;
+        }
+
+        RoomDTO roomDTO=reservationDTO.getRoomDTO();
+        roomDTO.setQty(roomDTO.getQty()-1);
+
+        boolean isUpdate=reservationBO.updateRoomQty(roomDTO);
+
+        if (!isUpdate){
+            return false;
+        }
+        return true;
     }
 
     @FXML
