@@ -68,14 +68,30 @@ public class UserFromController {
 
     UserBO userBO= (UserBO) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.USERBO);
 
-    public void initialize(){
+    public void initialize() {
         loadAllUsers();
+        iniUI();
 
         colUserId.setCellValueFactory(new PropertyValueFactory<>("id"));
         coluserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+
+        tblUser.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            btnDelete.setDisable(newValue==null);
+            btnSave.setText(newValue !=null ? "update" : "save");
+            btnSave.setDisable(newValue==null);
+
+            if (newValue!=null){
+                txtUserId.setText(newValue.getId());
+                txtUserName.setText(newValue.getUserName());
+                txtPassword.setText(newValue.getPassword());
+                txtContact.setText(newValue.getContact());
+            }
+        });
+
     }
+
 
     private void loadAllUsers(){
         tblUser.getItems().clear();
@@ -90,6 +106,17 @@ public class UserFromController {
     }
 
     public void iniUI() {
+        txtUserId.clear();
+        txtUserName.clear();
+        txtPassword.clear();
+        txtContact.clear();
+        txtUserId.setDisable(true);
+        txtUserName.setDisable(true);
+        txtPassword.setDisable(true);
+        txtContact.setDisable(true);
+        btnSave.setDisable(true);
+        btnDelete.setDisable(true);
+
     }
 
     @FXML
@@ -124,7 +151,18 @@ public class UserFromController {
 
     @FXML
     void btnNewSaveOnAction(ActionEvent event) {
+        txtUserId.setEditable(false);
+        txtUserName.setDisable(false);
+        txtPassword.setDisable(false);
+        txtContact.setDisable(false);
+        txtUserId.clear();
         txtUserId.setText(generateNewIds());
+        txtUserName.clear();
+        txtPassword.clear();
+        txtContact.clear();
+        btnSave.setDisable(false);
+        btnSave.setText("Save User");
+        tblUser.getSelectionModel().clearSelection();
     }
 
 

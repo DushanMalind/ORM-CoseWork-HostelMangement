@@ -22,6 +22,7 @@ import java.io.IOException;
 public class MainFromController {
 
     public ImageView imgUser;
+    public ImageView imgLogOut;
     @FXML
     private ImageView imgReservation;
 
@@ -86,6 +87,10 @@ public class MainFromController {
                     lblHead.setText("User From");
                     lblDescription.setText("Click to add, edit, delete, search or view User");
                     break;
+                case "imgLogOut":
+                    lblHead.setText("LogOut From");
+                    lblDescription.setText("Click to add, edit, delete, search or view LogOut");
+                    break;
             }
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(4000), icon);
             scaleT.setToX(1.2);
@@ -121,6 +126,9 @@ public class MainFromController {
                     break;
                 case "imgUser" :
                     root= FXMLLoader.load(this.getClass().getResource("../view/user_from.fxml"));
+                    break;
+                case "imgLogOut" :
+                    root= FXMLLoader.load(this.getClass().getResource("../view/login_from.fxml"));
                     break;
                 default:
                     new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();

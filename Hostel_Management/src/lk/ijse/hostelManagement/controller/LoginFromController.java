@@ -67,4 +67,8 @@ public class LoginFromController {
 
     }
 
+    public void btnShowPassowrd(ActionEvent event) {
+        String password=txtPassword.getText();
+        new Alert(Alert.AlertType.INFORMATION,"Password is:" +password).show();
+    }
 }

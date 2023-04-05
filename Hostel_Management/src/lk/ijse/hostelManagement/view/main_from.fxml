@@ -73,5 +73,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <ImageView fx:id="imgLogOut" fitHeight="62.0" fitWidth="73.0" layoutX="898.0" layoutY="675.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@assests/imge/icons8-circled-user-male-skin-type-1-and-2.gif" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>
