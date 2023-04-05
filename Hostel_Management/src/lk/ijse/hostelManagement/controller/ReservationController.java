@@ -126,6 +126,7 @@ public class ReservationController {
         tblReservation.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             btnClear.setDisable(newValue==null);
             btnSave.setText(newValue!=null ? "update" : "save");
+            btnSave.setDisable(newValue==null);
 
             if (newValue!=null){
                 if (newValue != null) {

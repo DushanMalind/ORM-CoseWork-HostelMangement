@@ -154,7 +154,8 @@ public class StudentFromController {
         if (buttonType.get() == ButtonType.YES) {
 
             try {
-                studentBO.deleteStudent(studentDTO);
+                studentBO.deleteStudent(new StudentDTO(txtStudentId.getText(),txtName.getText(),txtAddress.getText(),
+                        txtContact.getText(),txtDob.getText(),cmdGender.getSelectionModel().getSelectedItem()));
                 tblCustomer.getItems().remove(tblCustomer.getSelectionModel().getSelectedItem());
                 tblCustomer.getSelectionModel().clearSelection();
                 iniUI();

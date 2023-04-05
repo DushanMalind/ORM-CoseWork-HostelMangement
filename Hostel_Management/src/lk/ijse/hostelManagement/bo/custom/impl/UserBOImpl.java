@@ -22,10 +22,12 @@ public class UserBOImpl implements UserBO {
         session= SessionFactoryConfiguaration.getInstance().getSession();
         userDAO.setSession(session);
         List<Users>allUsers=userDAO.getAll();
+        System.out.println(allUsers);
         List<UserDTO>userDTOList=new ArrayList<>();
         for (Users users : allUsers){
             userDTOList.add(new UserDTO(users.getId(),users.getUserName(),users.getPassword(),users.getContact()));
         }
+        System.out.println(userDTOList);
         return userDTOList;
     }
 
