@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -26,6 +27,8 @@ public class LoginFromController {
 
 
     public AnchorPane root;
+    public Label lblUserName;
+    public Label lblPassword;
     @FXML
     private Button btnLogin;
 
@@ -61,7 +64,9 @@ public class LoginFromController {
 //                new Alert(Alert.AlertType.INFORMATION, "Your login").show();
                 Navigation.navigation(Routes.MAINFROM,root);
             }else {
-                new Alert(Alert.AlertType.INFORMATION, "Not login").show();
+               /* new Alert(Alert.AlertType.INFORMATION, "Not login").show();*/
+                lblUserName.setText("Invalid UserName");
+                lblPassword.setText("Invalid Password");
             }
         }
 

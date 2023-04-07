@@ -1,26 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.SignUpFromController">
+<AnchorPane fx:id="root" opacity="0.92" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.SignUpFromController">
    <children>
-      <Label layoutX="592.0" layoutY="114.0" prefHeight="76.0" prefWidth="412.0" style="-fx-background-color: #24e824;" text="SignnUp From" textFill="WHITE">
+      <Label layoutX="916.0" layoutY="120.0" prefHeight="76.0" prefWidth="551.0" style="-fx-background-color: #24e824;" text="        SignUp From" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="54.0" />
          </font>
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+            <String fx:value="my-btn-class" />
+         </styleClass>
       </Label>
-      <TextField fx:id="txtUserNames" layoutX="581.0" layoutY="420.0" prefHeight="46.0" prefWidth="434.0" />
-      <TextField fx:id="txtEmail" layoutX="581.0" layoutY="588.0" prefHeight="46.0" prefWidth="434.0" />
-      <Button fx:id="btnSign" layoutX="711.0" layoutY="679.0" mnemonicParsing="false" onAction="#btnSignnOnAction" prefHeight="53.0" prefWidth="201.0" text="Sign" />
-      <Button fx:id="btnSign1" layoutX="362.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="53.0" prefWidth="201.0" text="LoginFom" />
-      <TextField fx:id="txtId" layoutX="581.0" layoutY="356.0" prefHeight="46.0" prefWidth="434.0" />
-      <Button fx:id="btnNewSign" layoutX="812.0" layoutY="241.0" mnemonicParsing="false" onAction="#btnNewSignID" prefHeight="53.0" prefWidth="201.0" text="+New Sign ID" />
-      <PasswordField fx:id="txtPassword" layoutX="575.0" layoutY="500.0" prefHeight="53.0" prefWidth="441.0" />
+      <TextField fx:id="txtUserNames" layoutX="903.0" layoutY="432.0" prefHeight="46.0" prefWidth="434.0" promptText="UserName(Kamal)">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtEmail" layoutX="905.0" layoutY="636.0" prefHeight="46.0" prefWidth="434.0" promptText="Email(dushana01@gmail.com)">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSign" layoutX="1122.0" layoutY="706.0" mnemonicParsing="false" onAction="#btnSignnOnAction" prefHeight="53.0" prefWidth="201.0" text="Sign">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnSign1" layoutX="831.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="53.0" prefWidth="201.0" text="LoginFom">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="txtId" layoutX="905.0" layoutY="362.0" prefHeight="46.0" prefWidth="434.0" promptText="SignID">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnNewSign" layoutX="1138.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnNewSignID" prefHeight="53.0" prefWidth="201.0" text="+New Sign ID">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <PasswordField fx:id="txtPassword" layoutX="902.0" layoutY="505.0" prefHeight="53.0" prefWidth="434.0" promptText="Password(Abc123!!!)">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </PasswordField>
+      <ImageView fitHeight="536.0" fitWidth="551.0" layoutX="130.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/imge/icons8-monitor.gif" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnShow" layoutX="1223.0" layoutY="571.0" mnemonicParsing="false" onAction="#btnShowAction" prefHeight="32.0" prefWidth="106.0" text="SHOW">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lblPassword" layoutX="905.0" layoutY="571.0" prefHeight="32.0" prefWidth="223.0" text="password" textFill="RED" />
+      <ImageView fitHeight="213.0" fitWidth="201.0" layoutX="1441.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assests/imge/icons8-customer-support-64.png" />
+         </image>
+      </ImageView>
    </children>
+   <stylesheets>
+      <URL value="@assests/style/style.css" />
+      <URL value="@assests/style/style3.css" />
+   </stylesheets>
 </AnchorPane>
