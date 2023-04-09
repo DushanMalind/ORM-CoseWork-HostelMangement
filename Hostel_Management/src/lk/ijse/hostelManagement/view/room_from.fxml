@@ -94,7 +94,7 @@
       </JFXButton>
       <JFXTreeTableRow layoutX="1290.0" layoutY="411.0" />
       <Label layoutX="817.0" layoutY="341.0" prefHeight="575.0" prefWidth="749.0" styleClass="circle3" stylesheets="@assests/style/style.css" />
-      <TableView fx:id="tblCustomer" layoutX="832.0" layoutY="441.0" prefHeight="449.0" prefWidth="704.0" styleClass="table-cell" stylesheets="@../../../../../../../../../AD1/AD1/New%20folder/Project%20Computer_Shop%20Layered-Architecture/Computer_Shop/src/lk/ijse/computer_Shop/view/assests/style/manage-customers-form.css">
+      <TableView fx:id="tblCustomer" layoutX="832.0" layoutY="441.0" prefHeight="449.0" prefWidth="704.0" styleClass="table-cell" stylesheets="@assests/style/manage-customers-form.css">
          <columns>
             <TableColumn fx:id="colRoomId" prefWidth="185.0" text="RoomID" />
             <TableColumn fx:id="colType" prefWidth="156.0" text="Type" />

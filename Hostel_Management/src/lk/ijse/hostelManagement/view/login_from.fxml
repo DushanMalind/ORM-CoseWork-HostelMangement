@@ -66,7 +66,7 @@
             <String fx:value="my-btn-class" />
          </styleClass>
       </Button>
-      <Label layoutX="906.0" layoutY="132.0" prefHeight="99.0" prefWidth="591.0" text="        Login From">
+      <Label layoutX="767.0" layoutY="136.0" prefHeight="99.0" prefWidth="591.0" text="        Login From">
          <font>
             <Font name="Arial Bold" size="60.0" />
          </font>
@@ -122,5 +122,15 @@
          </font>
       </Label>
       <Label fx:id="lblPassword" layoutX="1032.0" layoutY="512.0" prefHeight="36.0" prefWidth="243.0" textFill="RED" />
+      <ImageView fitHeight="666.0" fitWidth="567.0" layoutX="19.0" layoutY="197.0" pickOnBounds="true">
+         <image>
+            <Image url="@assests/imge/2764140.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="451.0" fitWidth="440.0" layoutX="1463.0" layoutY="367.0" pickOnBounds="true">
+         <image>
+            <Image url="@assests/imge/sysadmin_03.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

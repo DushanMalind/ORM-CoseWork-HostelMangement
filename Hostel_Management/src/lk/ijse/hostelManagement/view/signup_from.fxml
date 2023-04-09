@@ -96,7 +96,7 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </PasswordField>
-      <ImageView fitHeight="536.0" fitWidth="551.0" layoutX="130.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="131.0" fitWidth="144.0" layoutX="1615.0" layoutY="288.0" pickOnBounds="true">
          <image>
             <Image url="@assests/imge/icons8-monitor.gif" />
          </image>
@@ -118,9 +118,19 @@
          </cursor>
       </Button>
       <Label fx:id="lblPassword" layoutX="905.0" layoutY="571.0" prefHeight="32.0" prefWidth="223.0" text="password" textFill="RED" />
-      <ImageView fitHeight="213.0" fitWidth="201.0" layoutX="1441.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="131.0" fitWidth="135.0" layoutX="1430.0" layoutY="278.0" pickOnBounds="true">
          <image>
             <Image url="@assests/imge/icons8-customer-support-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="719.0" fitWidth="743.0" layoutX="47.0" layoutY="177.0" pickOnBounds="true">
+         <image>
+            <Image url="@assests/imge/3054596.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="424.0" fitWidth="498.0" layoutX="1388.0" layoutY="521.0" pickOnBounds="true">
+         <image>
+            <Image url="@assests/imge/2592285.jpg" />
          </image>
       </ImageView>
    </children>
