@@ -27,7 +27,9 @@ public class UserBOImpl implements UserBO {
         for (Users users : allUsers){
             userDTOList.add(new UserDTO(users.getId(),users.getUserName(),users.getPassword(),users.getContact()));
         }
-        System.out.println(userDTOList);
+        System.out.println(userDTOList
+
+        );
         return userDTOList;
     }
 

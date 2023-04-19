@@ -1,8 +1,6 @@
 package lk.ijse.hostelManagement.controller;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,11 +16,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainFromController {
 
     public ImageView imgUser;
     public ImageView imgLogOut;
+    public Label lblDateTime;
     @FXML
     private ImageView imgReservation;
 
@@ -43,10 +44,23 @@ public class MainFromController {
 
 
     public  void initialize(){
+        setDateAndTime();
+
         FadeTransition fadeTransition=new FadeTransition(Duration.millis(3000),root);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.play();
+    }
+
+    private void setDateAndTime(){
+        Timeline timeline=new Timeline(
+                new KeyFrame(Duration.ZERO, e->{
+                    DateTimeFormatter formatter=DateTimeFormatter.ofPattern("  yyyy-MM-dd  HH:mm:ss a");
+                    lblDateTime.setText(LocalDateTime.now().format(formatter));
+                }),new KeyFrame(Duration.seconds(1)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
     }
 
     @FXML

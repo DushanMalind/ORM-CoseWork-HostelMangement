@@ -23,8 +23,12 @@ public class Navigation {
                 initUI("signUp_from.fxml");
                 break;
             case LOGINFROM:
-                window.setTitle("Sign From");
+                window.setTitle("Login From");
                 initUI("login_from.fxml");
+                break;
+            case SPACHSCREEN:
+                window.setTitle("Spach From");
+                initUI("loadinProcessFrom.fxml");
                 break;
         }
     }

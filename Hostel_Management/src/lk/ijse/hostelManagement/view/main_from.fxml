@@ -81,5 +81,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Label fx:id="lblDateTime" layoutX="186.0" layoutY="724.0" prefHeight="52.0" prefWidth="230.0" styleClass="circle3" stylesheets="@assests/style/style.css" textFill="#0252dd" />
    </children>
 </AnchorPane>

@@ -35,7 +35,7 @@ public class AppInitializer extends Application {
             System.out.println(s.getRoom().getRoomTypeId());
         }*/
 
-        Parent root= FXMLLoader.load(this.getClass().getResource("view/login_from.fxml"));
+        Parent root= FXMLLoader.load(this.getClass().getResource("view/loadinProcessFrom.fxml"));
         Scene mainScene=new Scene(root);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Hostel Management");

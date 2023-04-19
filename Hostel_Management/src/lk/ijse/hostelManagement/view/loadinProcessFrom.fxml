@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="roots" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelManagement.controller.LoadinProcessFromController">
+   <children>
+      <Label layoutX="464.0" layoutY="100.0" prefHeight="88.0" prefWidth="900.0" text="  Welcome Hostel Mangement System">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="45.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressBar" layoutX="7.0" layoutY="922.0" prefHeight="77.0" prefWidth="1899.0" progress="0.0" />
+      <Label layoutX="1300.0" layoutY="857.0" prefHeight="58.0" prefWidth="308.0" text="    Loading">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Arial Bold" size="45.0" />
+         </font>
+      </Label>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="1641.0" layoutY="866.0" prefHeight="40.0" prefWidth="54.0" progress="0.0" />
+      <Label layoutX="1519.0" layoutY="1014.0" prefHeight="58.0" prefWidth="387.0" text="  Dushan Malinda">
+         <stylesheets>
+            <URL value="@assests/style/style.css" />
+            <URL value="@assests/style/style3.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="circle3" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+         <font>
+            <Font name="Bodoni MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="387.0" fitWidth="448.0" layoutX="743.0" layoutY="323.0" pickOnBounds="true">
+         <image>
+            <Image url="@assests/imge/sysadmin_03.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,5 +1,5 @@
 package lk.ijse.hostelManagement.util;
 
 public enum Routes {
-    MAINFROM,SINGNFROM,LOGINFROM
+    MAINFROM,SINGNFROM,LOGINFROM,SPACHSCREEN
 }
